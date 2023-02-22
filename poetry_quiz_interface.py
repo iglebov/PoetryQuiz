@@ -237,8 +237,7 @@ class PoetryQuizInterface:
         right_answer = PoetryQuizInterface.poetry_showing[step]
         picked_answer = PoetryQuizInterface.get_clicked_button_text(button_id)
         if right_answer != picked_answer:
-            PoetryQuizInterface.mistakes += 1
-            PoetryQuizInterface.finish_game()
+            PoetryQuizInterface.finish_game(True)
             return False
         return True
 
@@ -253,7 +252,7 @@ class PoetryQuizInterface:
         return buttons_data[button_id]
 
     @staticmethod
-    def finish_game() -> None:
+    def finish_game(lost: bool = False) -> None:
         # Скрываем кнопки
         PoetryQuizInterface.first_answer_button.pack_forget()
         PoetryQuizInterface.second_answer_button.pack_forget()
@@ -261,13 +260,13 @@ class PoetryQuizInterface:
         # Меняем название кнопки для смены стихотворения
         PoetryQuizInterface.another_poetry.configure(text="Сыграть заново")
         # Выводим результат
-        if PoetryQuizInterface.mistakes == 0:
+        if lost:
             PoetryQuizInterface.poetry_part.set(
-                "Поздравляю!\n\nВы полностью угадали стихотворение!"
+                f"Упс!\n\nВы допустили ошибку.\n\nПопробуйте заново."
             )
         else:
             PoetryQuizInterface.poetry_part.set(
-                f"Упс!\n\nВы допустили ошибку.\n\nПопробуйте заново."
+                "Поздравляю!\n\nВы полностью угадали стихотворение!"
             )
 
     """Важные элементы"""
