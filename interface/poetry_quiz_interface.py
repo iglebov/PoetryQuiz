@@ -6,7 +6,7 @@ import tkinter as tk
 from tkinter import ttk
 
 # Импортируем словарь со стихотворениями
-from poetry import poetry_dict
+from extra.poetry import poetry_dict
 
 
 class PoetryQuizInterface:
