@@ -31,13 +31,13 @@ class PoetryQuizInterface:
     mistakes = 0
 
     @staticmethod
-    def start_game() -> None:
-        """Запускает игру."""
+    def start_ui() -> None:
+        """Запускает интерфейс."""
         PoetryQuizInterface.root.mainloop()
 
     @staticmethod
-    def exit_game() -> None:
-        """Закрывает игру."""
+    def destroy_ui() -> None:
+        """Закрывает интерфейс."""
         PoetryQuizInterface.root.destroy()
 
     @staticmethod
@@ -314,7 +314,7 @@ class PoetryQuizInterface:
         highlightbackground="red",
         highlightthickness=2.5,
         font="Arial 24",
-        command=exit_game,
+        command=destroy_ui,
         justify=tk.CENTER,
     )
     exit_button.pack(expand=True)
