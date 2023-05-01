@@ -44,10 +44,12 @@ class PoetryQuizInterface:
     def play_game() -> None:
         """Создает основное окно для стихотворения."""
         # Скрываем детали меню
-        PoetryQuizInterface.start_label.pack_forget()
-        PoetryQuizInterface.start_button.pack_forget()
-        PoetryQuizInterface.exit_button.pack_forget()
-        PoetryQuizInterface.poetry_button.pack_forget()
+        PoetryQuizInterface.hide_elements(
+            PoetryQuizInterface.start_label,
+            PoetryQuizInterface.start_button,
+            PoetryQuizInterface.exit_button,
+            PoetryQuizInterface.poetry_button,
+        )
         # Выбираем стихотворение
         PoetryQuizInterface.poetry_showing_name = random.choice(
             list(poetry_dict.keys())
@@ -69,22 +71,24 @@ class PoetryQuizInterface:
             step=PoetryQuizInterface.step,
         )
         # Размещаем кнопки для ответов
-        PoetryQuizInterface.first_answer_button.pack(side="top", expand=2)
-        PoetryQuizInterface.second_answer_button.pack(side="top", expand=2)
-        PoetryQuizInterface.third_answer_button.pack(side="top", expand=2)
-        # Кнопка для выбора нового стихотворения
-        PoetryQuizInterface.another_poetry.pack(side="top", expand=2)
-        # Кнопка для возвращения в меню
-        PoetryQuizInterface.go_back_button.pack(side="top", expand=2)
+        PoetryQuizInterface.place_elements(
+            PoetryQuizInterface.first_answer_button,
+            PoetryQuizInterface.second_answer_button,
+            PoetryQuizInterface.third_answer_button,
+            PoetryQuizInterface.another_poetry,
+            PoetryQuizInterface.go_back_button
+        )
 
     @staticmethod
     def open_poetry_menu() -> None:
         """Открывает меню со стихотворенями."""
         # Убираем лишние элементы интерфейса
-        PoetryQuizInterface.start_label.pack_forget()
-        PoetryQuizInterface.start_button.pack_forget()
-        PoetryQuizInterface.exit_button.pack_forget()
-        PoetryQuizInterface.poetry_button.pack_forget()
+        PoetryQuizInterface.hide_elements(
+            PoetryQuizInterface.start_label,
+            PoetryQuizInterface.start_button,
+            PoetryQuizInterface.exit_button,
+            PoetryQuizInterface.poetry_button,
+        )
         # ComboBox для выбора стихотворения
         PoetryQuizInterface.poetry_choices.pack(side="top", expand=2)
         # Кнопка для возвращения в меню
@@ -107,20 +111,21 @@ class PoetryQuizInterface:
         """Возвращаемся в меню."""
         # Название игры
         PoetryQuizInterface.start_label.pack(fill="both", expand=True)
-        # Кнопка для старта игры
-        PoetryQuizInterface.start_button.pack(side="top", expand=2)
-        # Кнопка для просмотра всех стихотворений
-        PoetryQuizInterface.poetry_button.pack(side="top", expand=2)
-        # Кнопка для завершения игры
-        PoetryQuizInterface.exit_button.pack(side="top", expand=2)
+        PoetryQuizInterface.place_elements(
+            PoetryQuizInterface.start_button,
+            PoetryQuizInterface.poetry_button,
+            PoetryQuizInterface.exit_button
+        )
         # Скрываем лишние элементы интерфейса
-        PoetryQuizInterface.poetry_label.pack_forget()
-        PoetryQuizInterface.poetry_choices.pack_forget()
-        PoetryQuizInterface.first_answer_button.pack_forget()
-        PoetryQuizInterface.second_answer_button.pack_forget()
-        PoetryQuizInterface.third_answer_button.pack_forget()
-        PoetryQuizInterface.another_poetry.pack_forget()
-        PoetryQuizInterface.go_back_button.pack_forget()
+        PoetryQuizInterface.hide_elements(
+            PoetryQuizInterface.poetry_label,
+            PoetryQuizInterface.poetry_choices,
+            PoetryQuizInterface.first_answer_button,
+            PoetryQuizInterface.second_answer_button,
+            PoetryQuizInterface.third_answer_button,
+            PoetryQuizInterface.another_poetry,
+            PoetryQuizInterface.go_back_button,
+        )
 
     @staticmethod
     def change_poetry() -> None:
@@ -130,16 +135,19 @@ class PoetryQuizInterface:
             PoetryQuizInterface.another_poetry.configure(
                 text="Выбрать другое стихотворение"
             )
-            PoetryQuizInterface.poetry_label.pack_forget()
-            PoetryQuizInterface.first_answer_button.pack_forget()
-            PoetryQuizInterface.second_answer_button.pack_forget()
-            PoetryQuizInterface.third_answer_button.pack_forget()
-            PoetryQuizInterface.another_poetry.pack_forget()
-            PoetryQuizInterface.go_back_button.pack_forget()
+            PoetryQuizInterface.hide_elements(
+                PoetryQuizInterface.poetry_label,
+                PoetryQuizInterface.first_answer_button,
+                PoetryQuizInterface.second_answer_button,
+                PoetryQuizInterface.third_answer_button,
+                PoetryQuizInterface.another_poetry,
+                PoetryQuizInterface.go_back_button,
+            )
             # Выводим строки стихотворения
             PoetryQuizInterface.poetry_label.configure(font="Arial 26")
             PoetryQuizInterface.poetry_label.pack(fill="both", expand=True)
             # Добавляем кнопки для ответов
+
             PoetryQuizInterface.first_answer_button.pack(side="top", expand=2)
             PoetryQuizInterface.second_answer_button.pack(side="top", expand=2)
             PoetryQuizInterface.third_answer_button.pack(side="top", expand=2)
@@ -254,9 +262,12 @@ class PoetryQuizInterface:
     @staticmethod
     def finish_game(lost: bool = False) -> None:
         # Скрываем кнопки
-        PoetryQuizInterface.first_answer_button.pack_forget()
-        PoetryQuizInterface.second_answer_button.pack_forget()
-        PoetryQuizInterface.third_answer_button.pack_forget()
+        PoetryQuizInterface.hide_elements(
+            PoetryQuizInterface.first_answer_button,
+            PoetryQuizInterface.second_answer_button,
+            PoetryQuizInterface.third_answer_button,
+        )
+
         # Меняем название кнопки для смены стихотворения
         PoetryQuizInterface.another_poetry.configure(text="Сыграть заново")
         # Выводим результат
@@ -269,6 +280,18 @@ class PoetryQuizInterface:
                 "Поздравляю!\n\nВы полностью угадали стихотворение!"
             )
 
+    @staticmethod
+    def place_elements(*elements):
+        for element in elements:
+            element.pack(side="top", expand=2)
+
+    @staticmethod
+    def hide_elements(*elements):
+        for element in elements:
+            element.pack_forget()
+
+
+
     """Важные элементы"""
 
     # Label для вывода стихотворения
@@ -279,6 +302,7 @@ class PoetryQuizInterface:
     # Название игры
     start_label = tk.Label(root, text="Poetry Quiz", font="Arial 36")
     start_label.pack(fill="both", expand=True)
+
     # Кнопка для старта игры
     start_button = tk.Button(
         root,
@@ -292,6 +316,7 @@ class PoetryQuizInterface:
         justify=tk.CENTER,
     )
     start_button.pack(expand=True)
+
     # Кнопка для просмотра всех стихотворений
     poetry_button = tk.Button(
         root,
@@ -305,6 +330,7 @@ class PoetryQuizInterface:
         justify=tk.CENTER,
     )
     poetry_button.pack(expand=True)
+
     # Кнопка для завершения игры
     exit_button = tk.Button(
         root,
