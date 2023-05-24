@@ -1,5 +1,6 @@
 # PoetryQuiz
-_Quiz Game On Poetry_
+
+Quiz game on poetry.
 
 <img width="900" src="https://user-images.githubusercontent.com/41822761/220738781-67735c62-dd77-44e1-b48d-e33470402b86.png">
 
