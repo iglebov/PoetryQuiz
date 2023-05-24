@@ -1,32 +1,30 @@
 # PoetryQuiz
 _Quiz Game On Poetry_
 
-<img width="900" alt="Screenshot 2023-02-22 at 22 31 18" src="https://user-images.githubusercontent.com/41822761/220738781-67735c62-dd77-44e1-b48d-e33470402b86.png">
+<img width="900" src="https://user-images.githubusercontent.com/41822761/220738781-67735c62-dd77-44e1-b48d-e33470402b86.png">
 
-Привет! =)
+Hi! =)
 
-Для запуска программы необходимо установить Python версии 3.0 и больше.
+To start this program you will need **Python** version 3.0 and higher.
 
-Его можно найти по ссылке https://www.python.org
-
-## Запуск программы на Windows
-Напишите в консоли (cmd): 
+## Starting on Windows
+Write in Command Line: 
 ```
 python main.py
 ```
-## Запуск программы на Mac OS
-Напишите в терминале (Terminal): 
+## Starting on Mac OS
+Write in Terminal: 
 ```
 python3 main.py
 ```
-## Добавление стихотворений
-Добавьте стихотворение в файл _poetry.py_ по шаблону:
+## Adding new poetry
+Add poetry in _poetry.py_ like this:
 ```
-"название_вашего_стихотворения": [
-        "Первая строка стихотворения,",
-        "Вторая строка стихотворения.",
+"name_of_your_poetry": [
+        "First line of poetry,",
+        "Second line of poetry.",
     ]
 ```
 ## TO DO
 
-1) Локализация (RUS/ENG)
+1) Localize (RUS/ENG)
