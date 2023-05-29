@@ -1,4 +1,4 @@
-# PoetryQuiz
+# Poetry Quiz
 
 Quiz game on poetry.
 
