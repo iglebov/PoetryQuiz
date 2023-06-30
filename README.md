@@ -8,11 +8,6 @@ Hi! =)
 
 To start this program you will need **Python** version 3.0 and higher.
 
-## Starting on Windows
-Write in Command Line: 
-```
-python main.py
-```
 ## Starting on Mac OS
 Write in Terminal: 
 ```
