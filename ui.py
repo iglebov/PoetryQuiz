@@ -18,7 +18,9 @@ class UI:
         self.step = 0
         self.last_step = 0
         self.mistakes = 0
-        self.poetry_label = tk.Label(self.root, textvariable=self.poetry_part, font="Arial 26")
+        self.poetry_label = tk.Label(
+            self.root, textvariable=self.poetry_part, font="Arial 26"
+        )
         self.start_label = tk.Label(self.root, text="Poetry Quiz", font="Arial 36")
         self.start_label.pack(fill="both", expand=True)
         self.start_button = tk.Button(
@@ -98,7 +100,9 @@ class UI:
             justify=tk.CENTER,
         )
         self.third_answer_button.bind("<Button-1>", self.next_pick)
-        self.poetry_choices = ttk.Combobox(self.root, values=self.poetry_titles, font="Arial 18")
+        self.poetry_choices = ttk.Combobox(
+            self.root, values=self.poetry_titles, font="Arial 18"
+        )
         self.poetry_choices.set("Выберите стихотворение")
         self.poetry_choices.bind("<<ComboboxSelected>>", self.open_poetry)
         self.go_back_button = tk.Button(
@@ -168,9 +172,7 @@ class UI:
 
     def go_back_to_menu(self) -> None:
         self.start_label.pack(fill="both", expand=True)
-        self.place_elements(
-            self.start_button, self.poetry_button, self.exit_button
-        )
+        self.place_elements(self.start_button, self.poetry_button, self.exit_button)
         self.hide_elements(
             self.poetry_label,
             self.poetry_choices,
@@ -276,13 +278,9 @@ class UI:
         )
         self.another_poetry.configure(text="Сыграть заново")
         if lost:
-            self.poetry_part.set(
-                f"Упс!\n\nВы допустили ошибку.\n\nПопробуйте заново."
-            )
+            self.poetry_part.set(f"Упс!\n\nВы допустили ошибку.\n\nПопробуйте заново.")
         else:
-            self.poetry_part.set(
-                "Поздравляю!\n\nВы полностью угадали стихотворение!"
-            )
+            self.poetry_part.set("Поздравляю!\n\nВы полностью угадали стихотворение!")
 
     @staticmethod
     def place_elements(*elements):
