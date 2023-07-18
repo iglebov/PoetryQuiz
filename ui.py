@@ -79,7 +79,7 @@ class UI:
             font="Arial 20",
             justify=tk.CENTER,
         )
-        self.first_answer_button.bind("<Button-1>", UI.next_pick)
+        self.first_answer_button.bind("<Button-1>", self.next_pick)
         self.second_answer_button = tk.Button(
             self.root,
             background="white",
@@ -89,7 +89,7 @@ class UI:
             font="Arial 20",
             justify=tk.CENTER,
         )
-        self.second_answer_button.bind("<Button-1>", UI.next_pick)
+        self.second_answer_button.bind("<Button-1>", self.next_pick)
         self.third_answer_button = tk.Button(
             self.root,
             background="white",
@@ -245,7 +245,7 @@ class UI:
     def next_pick(self, event: tk.Event) -> None:
         if self.step < self.last_step - 2:
             self.step += 1
-            if PoetryQuiz.check_answer(event.widget._name, PoetryQuiz.step):  # noqa
+            if self.check_answer(event.widget._name, self.step):  # noqa
                 self.set_all_buttons(
                     poetry_showing_name=self.poetry_showing_name,
                     poetry_showing=self.poetry_showing,
