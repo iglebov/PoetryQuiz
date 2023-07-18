@@ -1,7 +1,5 @@
-from poetry_quiz import PoetryQuiz
-
+from ui import UI
 
 if __name__ == "__main__":
-    # Запускаем игру
-    poetry_quiz = PoetryQuiz()
-    poetry_quiz.start_ui()
+    ui = UI()
+    ui.start_ui()
