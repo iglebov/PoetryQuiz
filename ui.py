@@ -11,16 +11,19 @@ class UI:
         self.root.title("Poetry Quiz")
         self.root.configure(background="gray")
         self.root.geometry("900x600")
+
         self.poetry_part = tk.StringVar()
         self.poetry_titles = [element for element in poetry_dict.keys()]
         self.poetry_showing_name = ""
         self.poetry_showing = []
+
         self.step = 0
         self.last_step = 0
         self.mistakes = 0
         self.poetry_label = tk.Label(
             self.root, textvariable=self.poetry_part, font="Arial 26"
         )
+
         self.start_label = tk.Label(self.root, text="Poetry Quiz", font="Arial 36")
         self.start_label.pack(fill="both", expand=True)
         self.start_button = tk.Button(
@@ -35,6 +38,7 @@ class UI:
             justify=tk.CENTER,
         )
         self.start_button.pack(expand=True)
+
         self.poetry_button = tk.Button(
             self.root,
             text="Посмотреть стихотворения",
@@ -47,6 +51,7 @@ class UI:
             justify=tk.CENTER,
         )
         self.poetry_button.pack(expand=True)
+
         self.exit_button = tk.Button(
             self.root,
             text="Завершить игру",
@@ -59,6 +64,7 @@ class UI:
             justify=tk.CENTER,
         )
         self.exit_button.pack(expand=True)
+
         self.another_poetry = tk.Button(
             self.root,
             background="white",
@@ -70,6 +76,7 @@ class UI:
             command=self.change_poetry,
             justify=tk.CENTER,
         )
+
         self.first_answer_button = tk.Button(
             self.root,
             background="white",
@@ -80,6 +87,7 @@ class UI:
             justify=tk.CENTER,
         )
         self.first_answer_button.bind("<Button-1>", self.next_pick)
+
         self.second_answer_button = tk.Button(
             self.root,
             background="white",
@@ -90,6 +98,7 @@ class UI:
             justify=tk.CENTER,
         )
         self.second_answer_button.bind("<Button-1>", self.next_pick)
+
         self.third_answer_button = tk.Button(
             self.root,
             background="white",
@@ -100,11 +109,13 @@ class UI:
             justify=tk.CENTER,
         )
         self.third_answer_button.bind("<Button-1>", self.next_pick)
+
         self.poetry_choices = ttk.Combobox(
             self.root, values=self.poetry_titles, font="Arial 18"
         )
         self.poetry_choices.set("Выберите стихотворение")
         self.poetry_choices.bind("<<ComboboxSelected>>", self.open_poetry)
+
         self.go_back_button = tk.Button(
             self.root,
             text="Назад",
@@ -159,13 +170,10 @@ class UI:
         self.poetry_choices.pack(side="top", expand=2)
         self.go_back_button.pack(side="bottom", expand=2)
 
-    def open_poetry(self, event: tk.Event) -> None:
+    def open_poetry(self, _: tk.Event) -> None:
         """Выводим стихотворение из списка."""
-        # Получаем все строки стихотворения
         poetry_rows = poetry_dict[self.poetry_choices.get()]
-        # "Собираем" стихотворение
         poetry = self.build_poetry(poetry_rows)
-        # Выводим стихотворение
         self.poetry_part.set(poetry)
         self.poetry_label.configure(font="Arial 16")
         self.poetry_label.pack(fill="both", expand=True)
@@ -243,7 +251,7 @@ class UI:
             var.configure(text=text_for_button)
 
     def next_pick(self, event: tk.Event) -> None:
-        if self.step < self.last_step - 2:
+        if self.step < (self.last_step - 2):
             self.step += 1
             if self.check_answer(event.widget._name, self.step):  # noqa
                 self.set_all_buttons(
@@ -251,8 +259,9 @@ class UI:
                     poetry_showing=self.poetry_showing,
                     step=self.step,
                 )
-        else:
-            self.finish_game()
+            return
+
+        self.finish_game()
 
     def check_answer(self, button_id: str, step: int) -> bool:
         right_answer = self.poetry_showing[step]
@@ -263,12 +272,11 @@ class UI:
         return True
 
     def get_clicked_button_text(self, button_id: str):
-        buttons_data = {
+        return {
             "!button5": self.first_answer_button["text"],
             "!button6": self.second_answer_button["text"],
             "!button7": self.third_answer_button["text"],
-        }
-        return buttons_data[button_id]
+        }[button_id]
 
     def finish_game(self, lost: bool = False) -> None:
         self.hide_elements(
@@ -283,11 +291,11 @@ class UI:
             self.poetry_part.set("Поздравляю!\n\nВы полностью угадали стихотворение!")
 
     @staticmethod
-    def place_elements(*elements):
+    def place_elements(*elements) -> None:
         for element in elements:
             element.pack(side="top", expand=2)
 
     @staticmethod
-    def hide_elements(*elements):
+    def hide_elements(*elements) -> None:
         for element in elements:
             element.pack_forget()
