@@ -141,6 +141,7 @@ class UI:
             self.exit_button,
             self.poetry_button,
         )
+
         self.poetry_showing_name = random.choice(list(poetry_dict.keys()))
         self.poetry_showing = poetry_dict[self.poetry_showing_name]
         self.last_step = len(self.poetry_showing)
@@ -167,6 +168,7 @@ class UI:
             self.exit_button,
             self.poetry_button,
         )
+
         self.poetry_choices.pack(side="top", expand=2)
         self.go_back_button.pack(side="bottom", expand=2)
 
@@ -179,8 +181,6 @@ class UI:
         self.poetry_label.pack(fill="both", expand=True)
 
     def go_back_to_menu(self) -> None:
-        self.start_label.pack(fill="both", expand=True)
-        self.place_elements(self.start_button, self.poetry_button, self.exit_button)
         self.hide_elements(
             self.poetry_label,
             self.poetry_choices,
@@ -191,9 +191,11 @@ class UI:
             self.go_back_button,
         )
 
+        self.start_label.pack(fill="both", expand=True)
+        self.place_elements(self.start_button, self.poetry_button, self.exit_button)
+
     def change_poetry(self) -> None:
         if self.another_poetry["text"] == "Сыграть заново":
-            self.another_poetry.configure(text="Выбрать другое стихотворение")
             self.hide_elements(
                 self.poetry_label,
                 self.first_answer_button,
@@ -202,6 +204,8 @@ class UI:
                 self.another_poetry,
                 self.go_back_button,
             )
+
+            self.another_poetry.configure(text="Выбрать другое стихотворение")
             self.poetry_label.configure(font="Arial 26")
             self.poetry_label.pack(fill="both", expand=True)
             self.first_answer_button.pack(side="top", expand=2)
@@ -210,21 +214,21 @@ class UI:
             self.another_poetry.configure(text="Выбрать другое стихотворение")
             self.another_poetry.pack(side="top", expand=2)
             self.go_back_button.pack(side="top", expand=2)
+
         self.poetry_showing_name = random.choice(list(poetry_dict.keys()))
         self.poetry_showing = poetry_dict[self.poetry_showing_name]
         self.step = 0
-        self.last_step = len(self.poetry_showing)
         self.set_all_buttons(
             self.poetry_showing_name,
             self.poetry_showing,
             self.step,
         )
 
+        self.last_step = len(self.poetry_showing)
+
     def build_poetry(self, poetry_rows: list) -> str:
         poetry = self.poetry_choices.get().upper() + "\n\n"
-        for string in poetry_rows:
-            poetry += string + "\n"
-        return poetry
+        return poetry + "\n".join(poetry_rows)
 
     def set_all_buttons(
         self, poetry_showing_name: str, poetry_showing: list, step: int
@@ -233,22 +237,25 @@ class UI:
         first_poetry = random.choice(list(poetry_dict.keys()))
         while first_poetry == poetry_showing_name:
             first_poetry = random.choice(list(poetry_dict.keys()))
+
         second_poetry = random.choice(list(poetry_dict.keys()))
         while second_poetry in [first_poetry, poetry_showing_name]:
             second_poetry = random.choice(list(poetry_dict.keys()))
+
         first_poetry = random.choice(poetry_dict[first_poetry])
         second_poetry = random.choice(poetry_dict[second_poetry])
         right_poetry = poetry_showing[step + 1]
         text = [first_poetry, second_poetry, right_poetry]
-        for button in [
-            "first_answer_button",
-            "second_answer_button",
-            "third_answer_button",
-        ]:
+
+        for button in (
+            self.first_answer_button,
+            self.second_answer_button,
+            self.third_answer_button,
+        ):
             text_for_button = random.choice(text)
+            button.configure(text=text_for_button)
+
             del text[text.index(text_for_button)]
-            var = getattr(self, button)
-            var.configure(text=text_for_button)
 
     def next_pick(self, event: tk.Event) -> None:
         if self.step < (self.last_step - 2):
@@ -271,7 +278,7 @@ class UI:
             return False
         return True
 
-    def get_clicked_button_text(self, button_id: str):
+    def get_clicked_button_text(self, button_id: str) -> str:
         return {
             "!button5": self.first_answer_button["text"],
             "!button6": self.second_answer_button["text"],
