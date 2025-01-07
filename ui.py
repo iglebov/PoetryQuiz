@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 from tkinter import ttk
 
+from constants import ANSWER_BUTTON_FONT, MAIN_BUTTON_FONT
 from poetry import poetry_dict
 
 
@@ -33,7 +34,7 @@ class UI:
             foreground="black",
             highlightbackground="green",
             highlightthickness=2.5,
-            font="Arial 24",
+            font=MAIN_BUTTON_FONT,
             command=self.play_game,
             justify=tk.CENTER,
         )
@@ -46,7 +47,7 @@ class UI:
             foreground="black",
             highlightbackground="orange",
             highlightthickness=2.5,
-            font="Arial 24",
+            font=MAIN_BUTTON_FONT,
             command=self.open_poetry_menu,
             justify=tk.CENTER,
         )
@@ -59,7 +60,7 @@ class UI:
             foreground="black",
             highlightbackground="red",
             highlightthickness=2.5,
-            font="Arial 24",
+            font=MAIN_BUTTON_FONT,
             command=self.destroy_ui,
             justify=tk.CENTER,
         )
@@ -72,7 +73,7 @@ class UI:
             foreground="black",
             highlightbackground="orange",
             highlightthickness=2.5,
-            font="Arial 24",
+            font=MAIN_BUTTON_FONT,
             command=self.change_poetry,
             justify=tk.CENTER,
         )
@@ -83,7 +84,7 @@ class UI:
             foreground="black",
             highlightbackground="green",
             highlightthickness=2.5,
-            font="Arial 20",
+            font=ANSWER_BUTTON_FONT,
             justify=tk.CENTER,
         )
         self.first_answer_button.bind("<Button-1>", self.next_pick)
@@ -94,7 +95,7 @@ class UI:
             foreground="black",
             highlightbackground="green",
             highlightthickness=2.5,
-            font="Arial 20",
+            font=ANSWER_BUTTON_FONT,
             justify=tk.CENTER,
         )
         self.second_answer_button.bind("<Button-1>", self.next_pick)
@@ -105,7 +106,7 @@ class UI:
             foreground="black",
             highlightbackground="green",
             highlightthickness=2.5,
-            font="Arial 20",
+            font=ANSWER_BUTTON_FONT,
             justify=tk.CENTER,
         )
         self.third_answer_button.bind("<Button-1>", self.next_pick)
@@ -123,7 +124,7 @@ class UI:
             foreground="black",
             highlightbackground="red",
             highlightthickness=2.5,
-            font="Arial 24",
+            font=MAIN_BUTTON_FONT,
             command=self.go_back_to_menu,
             justify=tk.CENTER,
         )

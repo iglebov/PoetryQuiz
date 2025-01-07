@@ -1,0 +1,2 @@
+MAIN_BUTTON_FONT = "Arial 24"
+ANSWER_BUTTON_FONT = "Arial 20"
