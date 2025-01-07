@@ -2,7 +2,7 @@ import random
 import tkinter as tk
 from tkinter import ttk
 
-from constants import ANSWER_BUTTON_FONT, MAIN_BUTTON_FONT
+from constants import ANSWER_BUTTON_FONT, BLACK, MAIN_BUTTON_FONT, WHITE
 from poetry import poetry_dict
 
 
@@ -30,8 +30,8 @@ class UI:
         self.start_button = tk.Button(
             self.root,
             text="Начать игру",
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="green",
             highlightthickness=2.5,
             font=MAIN_BUTTON_FONT,
@@ -43,8 +43,8 @@ class UI:
         self.poetry_button = tk.Button(
             self.root,
             text="Посмотреть стихотворения",
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="orange",
             highlightthickness=2.5,
             font=MAIN_BUTTON_FONT,
@@ -56,8 +56,8 @@ class UI:
         self.exit_button = tk.Button(
             self.root,
             text="Завершить игру",
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="red",
             highlightthickness=2.5,
             font=MAIN_BUTTON_FONT,
@@ -68,9 +68,9 @@ class UI:
 
         self.another_poetry = tk.Button(
             self.root,
-            background="white",
+            background=WHITE,
             text="Выбрать другое стихотворение",
-            foreground="black",
+            foreground=BLACK,
             highlightbackground="orange",
             highlightthickness=2.5,
             font=MAIN_BUTTON_FONT,
@@ -80,8 +80,8 @@ class UI:
 
         self.first_answer_button = tk.Button(
             self.root,
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="green",
             highlightthickness=2.5,
             font=ANSWER_BUTTON_FONT,
@@ -91,8 +91,8 @@ class UI:
 
         self.second_answer_button = tk.Button(
             self.root,
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="green",
             highlightthickness=2.5,
             font=ANSWER_BUTTON_FONT,
@@ -102,8 +102,8 @@ class UI:
 
         self.third_answer_button = tk.Button(
             self.root,
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="green",
             highlightthickness=2.5,
             font=ANSWER_BUTTON_FONT,
@@ -120,8 +120,8 @@ class UI:
         self.go_back_button = tk.Button(
             self.root,
             text="Назад",
-            background="white",
-            foreground="black",
+            background=WHITE,
+            foreground=BLACK,
             highlightbackground="red",
             highlightthickness=2.5,
             font=MAIN_BUTTON_FONT,
